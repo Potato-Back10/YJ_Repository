@@ -3,7 +3,7 @@ package GamzaStudy.ToDoList;
 import jakarta.persistence.*;
 
 @Entity
-public class ToDoEntity {
+public class ToDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
