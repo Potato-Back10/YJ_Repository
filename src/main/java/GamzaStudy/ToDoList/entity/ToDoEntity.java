@@ -16,9 +16,14 @@ public class ToDoEntity {
     private String task;
     private boolean done;
 
-    public ToDoEntity(String task, boolean done) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    public ToDoEntity(String task, boolean done, UserEntity user) {
         this.task = task;
         this.done = done;
+        this.user = user;
     }
 
     public void updateToDo(String task, boolean done) {
