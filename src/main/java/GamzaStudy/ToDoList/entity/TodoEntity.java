@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "todos")
 @Getter
 @NoArgsConstructor
-public class ToDoEntity {
+public class TodoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,7 +20,7 @@ public class ToDoEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    public ToDoEntity(String task, boolean done, UserEntity user) {
+    public TodoEntity(String task, boolean done, UserEntity user) {
         this.task = task;
         this.done = done;
         this.user = user;
