@@ -42,13 +42,14 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         String authorization = request.getHeader("Authorization");
+
         if (authorization == null || !authorization.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
-        String token = authorization.substring(7); // "Bearer " 제거
+        String token = authorization.substring(7); // "Bearer" 제거  << ? 헐
 
-        try {
+        try {       //!코드리뷰 때 물어보기 try-catch로 검증해도 되는가?
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(secretKey)
                     .build()
@@ -56,7 +57,7 @@ public class JwtFilter extends OncePerRequestFilter {
                     .getBody();
 
             Number userIdNumber = (Number) claims.get("userId");
-            Long userId = userIdNumber.longValue();
+            //Long userId = userIdNumber.longValue(); << 이부분 빼고
             String username = (String) claims.get("username");
 
             UsernamePasswordAuthenticationToken authentication =

@@ -1,9 +1,9 @@
 package GamzaStudy.ToDoList.controller;
 
-import GamzaStudy.ToDoList.dto.UserLoginResponseDto;
+import GamzaStudy.ToDoList.dto.LoginResponseDto;
 import GamzaStudy.ToDoList.dto.UserRequestDto;
-import GamzaStudy.ToDoList.dto.UserSignupResponseDto;
-import GamzaStudy.ToDoList.service.UserService;
+import GamzaStudy.ToDoList.dto.UserResponseDto;
+import GamzaStudy.ToDoList.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserSignupResponseDto> signup(@RequestBody UserRequestDto requestDto) {
-        UserSignupResponseDto response = userService.signup(requestDto);
+    public ResponseEntity<UserResponseDto> signup(@RequestBody UserRequestDto requestDto) {
+        UserResponseDto response = userService.signup(requestDto);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserLoginResponseDto> login(
+    public ResponseEntity<LoginResponseDto> login(
             @RequestBody UserRequestDto requestDto,
             HttpServletResponse response) {
-        UserLoginResponseDto loginResponse = userService.login(requestDto, response);
+        LoginResponseDto loginResponse = userService.login(requestDto, response);
         return ResponseEntity.ok(loginResponse);
     }
 

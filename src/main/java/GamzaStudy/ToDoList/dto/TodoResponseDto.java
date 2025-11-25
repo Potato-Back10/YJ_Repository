@@ -1,22 +1,15 @@
 package GamzaStudy.ToDoList.dto;
 
-import GamzaStudy.ToDoList.entity.ToDoEntity;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import GamzaStudy.ToDoList.entity.TodoEntity;
 import lombok.Getter;
 
-import lombok.Setter;
-
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-
-public class ResponseDto {
+public class TodoResponseDto {
     private long id;
     private String task;
     private boolean done;
 
-    public ResponseDto(ToDoEntity todo) {
+    public TodoResponseDto(TodoEntity todo) {
         this.id = todo.getId();
         this.task = todo.getTask();
         this.done = todo.isDone();
